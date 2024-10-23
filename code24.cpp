@@ -25,3 +25,38 @@
 // 10 1
 // 20 2
 // 5
+#include <bits/stdc++.h>
+using namespace std;
+struct store
+{
+    int id;
+    int size;
+};
+int main()
+{
+    int n,cnt=0;
+    cin >> n;
+    vector<int> boxes(n, 100);
+    vector<store> store_res(n);
+    for (int i=1;i<=n;i++)
+    {
+        int s;
+        cin >> s;
+        int k = 0 ;
+        while (boxes[k] < s)
+        {
+            k++;
+        }
+        if(k>cnt){
+            cnt=k;
+        }
+            boxes[k] -= s;
+            store_res[i].id = k+1;//编号要加一，因为原来是从零开始
+            store_res[i].size = s;
+    }
+    for (int i=1;i<=n;i++)
+    {
+        cout << store_res[i].size << " " << store_res[i].id << endl;
+    }
+    cout<<cnt+1;
+}
