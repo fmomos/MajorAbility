@@ -73,39 +73,16 @@ Node* add(Node *head, Node *newnode){
     current->next=newnode;
     return head;
 };
-// void display(Node *head){
-//     int flag=0;
-//     Node *current=head;
-//     while(current!=NULL){
-//         if(current->next!=NULL){
-//         if(current->end<=current->next->start&&flag==0){
-//              cout<<current->name<<" "<<current->start<<" "<<current->end<<endl;
-//         }else if(current->end<=current->next->start&&flag==1) {
-//             cout<<"*"<<current->name<<" "<<current->start<<" "<<current->end<<endl;
-//             flag=0;
-//         }else {
-//             cout<<"*"<<current->name<<" "<<current->start<<" "<<current->end<<endl;
-//             flag=1;
-//         }
-//         }else{
-//             if(flag==0){
-//                 cout<<current->name<<" "<<current->start<<" "<<current->end<<endl;
-//             }else{
-//                 cout<<"*"<<current->name<<" "<<current->start<<" "<<current->end<<endl;
-//             }
-//         }
-//         current=current->next;
-//     }
-// };
+
 void display(Node *head) {
     Node *current = head;
     while (current != NULL) {
         bool hasConflict = false;
         Node *check = head;
         
-        // 检查当前工作是否与其他工作冲突
+        // 检查当前工作是否与其他工作冲突(前后的工作都检查)
         while (check != NULL) {
-            if (check != current && ((current->start < check->end && current->end > check->start))) {
+            if (check != current && ((current->start < check->end && current->end > check->start))) {//前面的工作隐含满足条件2，后面的工作隐含满足条件1
                 hasConflict = true;
                 break;
             }

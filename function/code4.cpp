@@ -82,25 +82,25 @@
 
 
 double averagegrade(student *stu, int count){
-    double ssum=0;
-    double tsg=0;
+    double allstudentscore=0;
+    double averagegrade=0;
+    double allstudentgpa=0;
     for(int i=0;i<count;i++){
-        double sgs=0;
-        double *s1=stu[i].score;
-        double *g1=stu[i].grade;
-        for(int j=0;j<100;j++){
-           if(s1[j]==-1) break;
-            double s=s1[j];
-            double g=g1[j];
-            ssum+=s;
-            sgs+=s*(g/10.0-5);
+        double singlestudentgpa=0;
+        double *grade=stu[i].grade;
+        double *score=stu[i].score;
+    for(int j=0;j<100;j++){
+        if(score[j]==-1){
+            break;
         }
-        tsg+=sgs;
+        allstudentscore+=score[j];
+        singlestudentgpa+=score[j]*(grade[j]/10-5);
     }
-     // 检查分母是否为零!!
-        if (ssum == 0) {
-        return 0; // 或者其他适当的错误处理
+        allstudentgpa+=singlestudentgpa;
     }
-    double result=tsg/ssum;
-    return result;
+    if(allstudentscore==0){//没有学生的情况 检查分母是否为零！！！！
+        return 0;
+    }
+    averagegrade=allstudentgpa/allstudentscore;
+    return averagegrade;
 }

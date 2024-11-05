@@ -29,7 +29,7 @@ int main()
     bool flag = false;
     int result;
     stringstream s(date);//使用了stringstream（字符串流）来解析一个日期字符串，并从中提取年、月、日的信息。
-    s >> year;
+    s >> year;//是s不是cin！！！！！！
     s.ignore(1);
     s >> month;
     s.ignore(1);

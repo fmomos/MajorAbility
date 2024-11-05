@@ -81,7 +81,7 @@
 // 012 CCCC
 
 
-class Student{//获奖线是普通生和特招运动员的2门课程平均分！！！所以要用两个构造函数区别开来一面学科特长生的成绩影响到获奖线
+class Student{//获奖线是普通生和特招运动员的2门课程平均分！！！所以要用两个构造函数区别开来以免学科特长生的成绩影响到获奖线
 protected:
     string num;
     string name;
@@ -139,3 +139,66 @@ class GroupC:public Student{
     }
     
 };
+
+1
+// class Student{
+//     protected:
+//     string id;
+//     string name;
+//     int s1;
+//     int s2;
+//     static float awardline;//静态成员变量！！！
+//     public:
+//      Student(const string& id,const string& name):
+//     id(id),name(name){//获奖线是普通生和特招运动员的2门课程平均分！！！所以要用两个构造函数区别开来以免学科特长生的成绩影响到获奖线
+//     }
+//     Student(const string& id,const string& name,int s1,int s2):
+//     id(id),name(name),s1(s1),s2(s2){
+//         if((s1+s2)/2.0>awardline){
+//             awardline=(s1+s2)/2.0;
+//         }
+//     }
+//     virtual void display()=0;
+// };
+// float Student::awardline = 0.0; // 初始化静态成员变量！！！
+// class GroupA:public Student{
+//     public:
+//     GroupA(const string& id,const string& name,int s1,int s2):
+//     Student(id, name, s1, s2){
+//     }
+//     void display(){
+//         if((s1+s2)/2.0==awardline){
+//             cout<<id<<" "<<name<<endl;
+//         }
+//     }
+// };
+// class GroupB:public Student{
+//     protected:
+//     char gs;
+//     public:
+//     GroupB(const string& id,const string&  name,int s1,int s2,char gs):
+//     Student(id, name, s1, s2),gs(gs){
+        
+//     }
+//      void display(){
+//         if((s1+s2)/2.0==awardline){
+//             cout<<id<<" "<<name<<endl;
+//         }else if((s1+s2)/2.0>=awardline*0.7&&gs=='A'){
+//             cout<<id<<" "<<name<<endl;
+//         }
+//     }
+// };
+// class GroupC:public Student{
+//     protected:
+//     int s1,s2,s3,s4,s5;
+//     public:
+//     GroupC(const string& id,const string&  name,int s1,int s2,int s3,int s4, int s5):
+//     Student(id, name),s1(s1),s2(s2),s3(s3),s4(s4),s5(s5){
+        
+//     }
+//      void display(){
+//         if((s1+s2+s3+s4+s5)/5.0>=awardline*0.9){
+//             cout<<id<<" "<<name<<endl;
+//         }
+//     }
+// };

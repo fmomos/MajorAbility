@@ -130,7 +130,7 @@ Task* getBatch(int m){
     int priority;
     cin>>priority;
     for(int i=0;i<m;i++){
-       Task* p = new Task;
+       Task* p = new Task;//声明了一个指向 Task 类型对象的指针 p1，并为它分配实际的对象。
        cin>>p->ID>>p->load;
         p->key=priority;
         p->next=nullptr;

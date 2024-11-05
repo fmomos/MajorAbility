@@ -40,7 +40,7 @@ bool CanAdd(string a)
         }
     }
     int num = stoi(a);
-    if (num >= 1 && num <= 1000)
+    if (num >= 1 && num <= 1000)//在区间内！！！！！！！
     {
         return true;
     }
@@ -51,9 +51,9 @@ bool CanAdd(string a)
 }
 int main()
 {
-    string a, b, result;
+    string a, b;
     cin >> a;
-    getchar();//读取空格
+    getchar();//读取空格！！！！
     getline(cin,b);//因为把输入中出现的第1个空格认为是A和B的分隔。所以用getline
     bool canA=CanAdd(a);
     bool canB=CanAdd(b);
