@@ -97,7 +97,7 @@ int main(){
         cin>>id>>p.gender>>p.fid>>p.mid;
         familyMap[id]=p;
          // 递归查找父亲和母亲的祖先
-        if(p.fid!="-1"&&familyMap.find(p.fid)==familyMap.end()){
+        if(p.fid!="-1"&&familyMap.find(p.fid)==familyMap.end()){//
             familyMap[p.fid]={'M',"-1","-1"};
         }
         if(p.mid!="-1"&&familyMap.find(p.mid)==familyMap.end()){
@@ -119,7 +119,7 @@ int main(){
         }else{
             bool related=false;
             for(const auto& ancestor:ancestors[p1]){
-              if(ancestors[p2].count(ancestor)){//查找集合重复的部分
+              if(ancestors[p2].count(ancestor)){//使用 count 方法，返回 1 表示存在，0 表示不存在：查找集合重复的部分
                 related=true;
                 break;
               }
@@ -133,3 +133,71 @@ int main(){
         
     }
 }
+
+
+#include <bits/stdc++.h>
+using namespace std;
+struct person{
+    string id;
+    char gender;
+    string fid;
+    string mid;
+};
+unordered_map <string,person> familyMap;
+unordered_map <string,unordered_set<string>> ancestors;
+void find(const string& id,unordered_set<string>& ancestor_set,int generation){
+if(generation>5){
+    return;
+}
+if(familyMap.find(id)==familyMap.end()){
+    return;
+}
+    ancestor_set.insert(id);
+    if(familyMap[id].fid!="-1"){
+        find(familyMap[id].fid,ancestor_set,generation+1);
+    }
+      if(familyMap[id].mid!="-1"){
+        find(familyMap[id].mid,ancestor_set,generation+1);
+    }
+}
+int main(){
+    int n;
+    cin>>n;//
+    while(n--){
+        person p;
+        cin>>p.id>>p.gender>>p.fid>>p.mid;
+        familyMap[p.id]=p;
+        if(p.fid!="-1"&&!familyMap.count(p.fid)){//
+            familyMap[p.fid]={p.fid,'M',"-1","-1"};
+        }
+        if(p.mid!="-1"&&!familyMap.count(p.mid)){
+            familyMap[p.mid]={p.mid,'F',"-1","-1"};
+        }
+    }
+    int k;
+    cin>>k;
+    while(k--){
+        string p1,p2;
+        cin>>p1>>p2;
+        if(familyMap[p1].gender==familyMap[p2].gender){
+            cout<<"Never Mind"<<endl;
+        }else{
+            unordered_set<string> ancestor_set1;
+            unordered_set<string> ancestor_set2;
+            find(p1,ancestor_set1,1);
+            find(p2,ancestor_set2,1);
+            bool contain=false;
+            for(const auto& a:ancestor_set1){
+                if(ancestor_set2.count(a)){
+                    contain=true;
+                    break;
+                }
+            }
+            if(contain){
+                cout<<"No"<<endl;
+            }else{
+                cout<<"Yes"<<endl;
+            }
+        }
+        }
+    }

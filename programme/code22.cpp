@@ -48,7 +48,7 @@ int main()
             }
             if (max_size < 0 || max_size > m)
             {
-                error=true;
+                error=true;//标记，最后再输出
                 break;
             }
         }

@@ -36,50 +36,44 @@
 // 0
 // 输出样例：
 // 12
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>//不知道入口在哪里，1不是入口！没有结点指向它的就是入口
 using namespace std;
-const int maxn=1e5;
-vector<int> Map[maxn];
-int n;
-unordered_set<int> doorset(n + 1);
-vector<int> depth(n + 1);
-int maxdepth = 0,fardoor=0;
-void dfs(int start,int depth)
-{
-    if(maxdepth<depth){
+const int maxdoornum=100001;
+vector<int>Map[maxdoornum];//!!
+int maxdepth=0;
+int depth=0;
+int fardoor=0;
+void dfs(int indoor,int depth){
+    if(maxdepth<=depth){//测试点1：出口即是最深处，深度为0！！
         maxdepth=depth;
-        fardoor=start;
+        fardoor=indoor;
     }
-    for(int i=0;i<Map[start].size();i++){
-       dfs(Map[start][i],depth+1); 
+ for(int i=0;i<Map[indoor].size();i++){
+    dfs(Map[indoor][i],depth+1);
     }
-
 }
-int main()
-{
-    int start;
-    cin >> n;
-    for (int i = 1; i <= n; i++)
-    {
-        int m;
-        cin >> m;
-        for (int j = 1; j <= m; j++)
-        {
-            int door;
-            cin >> door;
-            Map[i].push_back(door);
-            doorset.insert(door);
+int main(){
+    int n;
+    cin>>n;
+    int flagdoor[n+1]={0};//不知道入口在哪里，1不是入口！没有结点指向它的就是入口!!!
+    int indoor=0;
+    for(int i=1;i<=n;i++){//从第一个开始标记!!!
+        int door_link_num;
+        cin>>door_link_num;
+        while(door_link_num--){
+          int door;
+          cin>>door;
+          Map[i].push_back(door);
+          flagdoor[door]=1;
         }
     }
-    for (int i = 1; i <= n; i++)
-    {
-        if (doorset.find(i) == doorset.end())
-        {
-            start = i;
+    for(int i=1;i<=n;i++){//从第一个开始读!!!
+        if(flagdoor[i]==0){
+            indoor=i;
             break;
         }
     }
-    dfs(start,0);
+    dfs(indoor,0);
     cout<<fardoor;
 }
 //dfs

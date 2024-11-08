@@ -33,6 +33,7 @@
 // Your password needs zi mu.
 // Your password is wan mei.
 // Your password is tai luan le.
+//测试点2考察的是一行输入中含有空格的情况，遇到这种情况cin是不行的，需要使用getline和getchar!!!!!!!!!!!!!
 #include <bits/stdc++.h>
 using namespace std;
 void judge(string s){
@@ -114,7 +115,7 @@ int main()
 //     getchar();//使用getchar()接收上行末尾的回车
 //     while(n--){
 //         string s;
-//         getline(cin,s);//测试点2考察的是一行输入中含有空格的情况，遇到这种情况cin是不行的，需要使用getline和getchar
+//         getline(cin,s);//测试点2考察的是一行输入中含有空格的情况，遇到这种情况cin是不行的，需要使用getline和getchar!!!!!!!!!!!!!
 //         out(s);
 //     }
 // }

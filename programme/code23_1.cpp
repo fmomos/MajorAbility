@@ -62,7 +62,7 @@ int main()
         }
         current_adr=current_node.next_adr;//改变地址
     }
-    for(int i=0;i<unique_nodelist.size();i++){//更新地址指针，因为原来的有些节点被去除
+    for(int i=0;i<unique_nodelist.size();i++){//更新地址指针!!!!，因为原来的有些节点被去除
         if(i<unique_nodelist.size()-1){//除了最后一个节点
             unique_nodelist[i].next_adr=unique_nodelist[i+1].adr;
         }else{

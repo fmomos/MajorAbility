@@ -34,7 +34,7 @@ int main()
     {
         for (int j = 1; j < totalmoney / money2; j++)
         {
-            for (int k = 1; k <= totalcnt - i - j; k++)
+            for (int k = 1; k <= totalcnt - i - j; k++)////k<=100-i-j
             {
                 if (i * 5 + j * 2 + k * 1 == 150&&i+j+k==100)//满足两个条件
                 {

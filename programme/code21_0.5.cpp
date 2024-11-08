@@ -121,102 +121,69 @@ int main() {
     }
     return 0;
 }
-// #include <bits/stdc++.h>
+// #include<bits/stdc++.h>
 // using namespace std;
-// bool match(char a, char b)
-// {
-//     return (a == '(' && b == ')')||(a == '[' && b == ']')||
-//         (a == '{' && b == '}');
+// bool isMatch(char c1,char c2){
+//   return (c1=='('&&c2==')')||(c1=='['&&c2==']')||(c1=='{'&&c2=='}');
 // }
-// int main()
-// {
-//     string s;
-//     stack<char> cs;
-//     while (getline(cin, s))//处理每一行
-//     {
-//         if (s == ".")
-//         {
+// int main(){
+// string s;
+// stack<char> sc;
+// while(getline(cin,s)){//处理每一行！！！！所以是string
+//      if(s=="."){
 //             break;
 //         }
-//           for (size_t i = 0; i < s.length(); i++)
-//         {
-//             if (s[i] == '(' || s[i] == '[' || s[i] == '{')
-//             {
-//                 cs.push(s[i]);
-//             }
-//             else if (s[i] == '/' &&i+1<s.length()&&s[i + 1] == '*')//防止越界
-//             {
-//                 cs.push(s[i]);
-//                 ++i;
-//                 cs.push(s[i]);
-//             }
-//             else if (s[i] == ')' || s[i] == ']' || s[i] == '}')
-//             {
-//                 if (!cs.empty())
-//                 {
-//                     char temp = cs.top();
-//                     bool flag = match(temp, s[i]);
-//                     if (flag)
-//                     {
-//                         cs.pop();
-//                     }
-//                     else
-//                     {
-//                         if(cs.top()=='*'){
-//                         cout << "NO" << endl;
-//                         cout <<"/*-?";
-//                         return 0;
-//                         }else{
-//                         cout << "NO" << endl;
-//                         cout << cs.top()<<"-?";
-//                         return 0;
-//                         }
-//                     }
-//                 }
-//                 else
-//                 {
-//                     cout << "NO" << endl;
-//                     cout << "?-" << s[i];
-//                     return 0;
-//                 }
-//             }
-//             else if (s[i] == '*'&&i+1<s.length()&& s[i + 1] == '/')
-//             {
-//                 if(!cs.empty()&&cs.top()=='*'){
-//                     cs.pop();
-//                     cs.pop();
-//                     ++i;
-//                 }else if(!cs.empty()){
-//                     cout << "NO" << endl;
-//                     cout << cs.top()<<"-?";
-//                     return 0;
-//                 }else{
-//                     cout << "NO" << endl;
-//                     cout << "?-*/";
-//                     return 0;
-//                 }
-//             }
-//         }
+//     for(size_t i=0;i<s.size();i++){
+//       char c=s[i];
+//       if(c=='('||c=='['||c=='{'){
+//           sc.push(c);
+//       }else if(c=='/'&&i+1<s.length()&&s[i+1]=='*'){
+//           sc.push(c);
+//           sc.push(s[i+1]);
+//           i++;
+//       }else if(c==')'||c==']'||c=='}'){
+//           if(!sc.empty()){
+//             char c1=sc.top();
+//           if(isMatch(c1,c)){
+//               sc.pop();
+//           }else{
+//               if(c1=='*'){
+//                 cout<<"NO\n"<<"/*-?";
+//               }else{
+//                cout<<"NO\n"<<c1<<"-?";
+//               }
+//               return 0;
+//           }
+//           }else{
+//             cout<<"NO\n"<<"?-"<<c<<endl;
+//             return 0;
+//           }
+//       }else if(c=='*'&&i+1<s.length()&&s[i+1]=='/'){
+//          if(!sc.empty()){
+//           char c1=sc.top();
+//           if(c1=='*'){
+//               sc.pop();
+//               sc.pop();
+//           }else{
+//               cout<<"NO\n"<<c1<<"-?";
+//               return 0;
+//           }
+//           }else{
+//             cout<<"NO\n"<<"?-*/";
+//             return 0;
+//           }
+//           i++;//测试点5，让循环次数加1,避免二次匹配/!!!
+//       }
 //     }
-          
-//     if (!cs.empty())
-//     {
-//         char temp = cs.top();
-//         if (temp != '*')
-//         {
-//             cout << "NO" << endl;
-//             cout << temp << "-?";
-//             return 0;
-//         }
-//         else
-//         {
-//             cout << "NO" << endl;
-//             cout << "/*-?";
-//             return 0;
+// }
+//      if(!sc.empty()){
+//         char tmp=sc.top();
+//         if(tmp=='*'){
+//             cout<<"NO\n"<<"/*-?";
+//         }else{
+//             cout<<"NO\n"<<tmp<<"-?";
 //         }
 //     }else{
-//             cout << "YES";//正确是YES
+//         cout<<"YES";//正确是YES!!!!
 //     }
-//     return 0;
-
 // }

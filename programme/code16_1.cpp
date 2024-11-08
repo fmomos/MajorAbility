@@ -18,6 +18,17 @@
 // 输出样例：
 // You are lucky!
 // Wish you good luck.
+
+
+// 还可以这样
+//   for(char a:s){
+//             int A=a-'0';//重点是这个
+//             cnt++;
+//             if(cnt<=3){
+//                 front3+=A;
+//         }else{
+//                 back3+=A;
+//         }
 #include <bits/stdc++.h>
 using namespace std;
 int main()
